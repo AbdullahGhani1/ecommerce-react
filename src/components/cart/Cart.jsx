@@ -8,7 +8,9 @@ function Cart() {
   const params = useParams();
   const [qty, setQty] = useState(1);
 
-  const product = products.find((product) => product._id === params.id);
+  const product = products.find(
+    (product) => product._id.toString() === params.id
+  );
 
   return (
     <Row>
@@ -21,7 +23,7 @@ function Cart() {
                 <Image src={product.image} alt={product.name} fluid rounded />
               </Col>
               <Col md={3}>
-                <Link to={`/home/products/${product._id}`}>{product.name}</Link>
+                <Link to={`/products/${product._id}`}>{product.name}</Link>
               </Col>
               <Col md={2}>PKR {product.price}</Col>
               <Col md={2}>

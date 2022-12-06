@@ -11,7 +11,15 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 function Footer() {
   return (
-    <React.Fragment>
+    <footer
+      style={{
+        background: "red",
+        position: "sticky",
+        right: 0,
+        left: 0,
+        bottom: 0,
+      }}
+    >
       <Row>
         <Container className=" bg-dark text-light">
           <Row className="p-4">
@@ -96,7 +104,7 @@ function Footer() {
           </div>
         </Container>
       </Row>
-    </React.Fragment>
+    </footer>
   );
 }
 

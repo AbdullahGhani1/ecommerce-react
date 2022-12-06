@@ -4,6 +4,7 @@ const Images = {
   camera: require("../assets/images/camera.jpg"),
   playstation: require("../assets/images/playstation.jpg"),
   mouse: require("../assets/images/mouse.jpg"),
+  redShoes: require("../assets/images/redShoes.jpg"),
 };
 const products = [
   {
@@ -53,6 +54,16 @@ const products = [
     category: "Women’s Clothing",
     image:
       "https://cdn.shopify.com/s/files/1/0535/5585/5537/products/35_57b1b7b1-3fd5-4f9e-8c07-27aaaa25d0f1.jpg?v=1667914890",
+  },
+  {
+    _id: 7366493831344,
+    name: "Sneakers",
+    image: Images.redShoes,
+    description: "Sneakers",
+    brand: "ShoeRepublic",
+    category: "Shoes",
+    price: 19000,
+    countInStock: 10,
   },
   {
     _id: 7366493831345,

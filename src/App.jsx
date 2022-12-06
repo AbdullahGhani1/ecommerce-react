@@ -31,7 +31,7 @@ function App() {
           element: <About />,
         },
         {
-          path: "/cart",
+          path: "/cart/:id",
           element: <Cart />,
         },
         {
