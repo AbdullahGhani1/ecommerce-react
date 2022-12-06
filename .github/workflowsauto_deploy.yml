@@ -1,0 +1,33 @@
+name: Ecommerce App
+on:
+  push:
+    branches: [main]
+  pull_request: 
+    branches: [main]
+#     A workflow run is made up of none
+jobs:
+  # This Workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    #     steps represents a sequence of tasks what will be executed as part of the job
+    steps:
+     # Checks-out you repository under $GITHUB_WORKSPACE, So your job can access it
+    - uses: actions/checkout@v-2
+    
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.5.1
+      with:
+        node-version: 12
+    
+    - name: Github Action for npm     
+      run:  npm install
+    
+    - name: installing surge
+      run: npm install -g surge
+    
+    - name: deploying on surge
+      run: surge ./build http://devs.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
+        
+    
+    
+      
