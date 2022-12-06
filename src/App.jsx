@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -6,20 +6,58 @@ import Navigation from "./components/navigation/Navigation";
 import Products from "./components/products/Products";
 import SingleProduct from "./components/product/SingleProduct";
 import Error from "./components/pageNotFound/Error";
+import Cart from "./components/cart/Cart";
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Navigation />,
+      children: [
+        {
+          index: true,
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/products",
+          element: <Products />,
+        },
+        {
+          path: "/products/:id",
+          element: <SingleProduct />,
+        },
+        {
+          path: "/about",
+          element: <About />,
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
+        },
+        {
+          path: "*",
+          element: <Error />,
+        },
+      ],
+    },
+  ]);
+
   return (
     <div className="App">
-      <Routes>
+      <RouterProvider router={router} />
+
+      {/* <Routes>
         <Route path="/" element={<Navigation />}>
           <Route path="home" element={<Home />} />
           <Route index element={<Home />} />
+          <Route path="home/products/:id" element={<SingleProduct />} />
+          <Route path="home/products/:id/cart/:id" element={<Cart />} />
+
           <Route path="about" element={<About />} />
-          <Route path="products" element={<Products />}>
-            <Route path=":id" element={<SingleProduct />} />
-          </Route>
+          <Route exect path="products" element={<Products />} />
           <Route path="*" element={<Error />} />
         </Route>
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
