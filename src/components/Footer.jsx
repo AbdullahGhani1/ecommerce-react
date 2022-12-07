@@ -13,8 +13,7 @@ function Footer() {
   return (
     <footer
       style={{
-        background: "red",
-        position: "sticky",
+        position: "relative",
         right: 0,
         left: 0,
         bottom: 0,
@@ -23,7 +22,7 @@ function Footer() {
       <Row>
         <Container className=" bg-dark text-light">
           <Row className="p-4">
-            <Col md={6} lg={4}>
+            <Col sm={12} md={6} lg={4}>
               <ListGroup.Item as="h3" className="text-warning">
                 INFORMATION
               </ListGroup.Item>
@@ -33,14 +32,13 @@ function Footer() {
                 minim veniam, quis nostrud.
               </ListGroup.Item>
             </Col>
-            <Col md={6} lg={4}>
+            <Col sm={12} md={6} lg={4}>
               <ListGroup.Item as="h3" className="text-warning">
                 <LinkContainer to="/">
                   <Nav.Link>Links</Nav.Link>
                 </LinkContainer>
               </ListGroup.Item>
               <ListGroup.Item title="ABOUT US" as="li" className="about-text">
-                ABOUT US
                 <LinkContainer to="/">
                   <Nav.Link>ABOUT US</Nav.Link>
                 </LinkContainer>
@@ -85,23 +83,26 @@ function Footer() {
           </Row>
         </Container>
       </Row>
-      <Row className="bg-light">
-        <Container className="bg-light text-">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              background: "#343a40",
-              textAlign: "center",
-              color: "white",
-              alignItems: "center",
-              fontSize: "1.5rem",
-              height: 50,
-            }}
+      <Row>
+        <Container
+          style={{
+            width: "100vw",
+            background: "#343a40",
+            textAlign: "center",
+            color: "white",
+            alignItems: "center",
+            fontSize: "1.2rem",
+            padding: "1rem",
+          }}
+        >
+          &copy; {new Date().getFullYear()}, Website. Made With React by
+          <Nav.Link
+            className="d-inline"
+            target={"_blank"}
+            href="https://github.com/AbdullahGhani1"
           >
-            &copy; {new Date().getFullYear()}, Website. Made With React by
-            Abdullah Ghani
-          </div>
+            &nbsp;{`Abdullah Ghani`}
+          </Nav.Link>
         </Container>
       </Row>
     </footer>

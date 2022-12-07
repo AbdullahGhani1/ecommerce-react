@@ -6,7 +6,7 @@ function Navigation() {
   return (
     <div>
       <Navbar />
-      <main className="py-3">
+      <main className="py-3" style={{ minHeight: "80vh" }}>
         <Outlet />
       </main>
       <Footer />
