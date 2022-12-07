@@ -2,8 +2,11 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
+import { useContext } from "react";
+import { Cart } from "../context/Context";
 
 function Navbars() {
+  const { cart } = useContext(Cart);
   return (
     <header>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -32,6 +35,20 @@ function Navbars() {
                 <Nav.Link>
                   <FaShoppingCart />
                   &nbsp;Cart
+                  <p
+                    style={{
+                      position: "relative",
+                      top: -41,
+                      left: 36,
+                      height: 25,
+                      width: 25,
+                      backgroundColor: "red",
+                      borderRadius: "50%",
+                      textAlign: "center",
+                    }}
+                  >
+                    {cart.length}
+                  </p>
                 </Nav.Link>
               </LinkContainer>
 

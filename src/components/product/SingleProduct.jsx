@@ -1,19 +1,36 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Col, Button, Image, Form, ListGroup } from "react-bootstrap";
 import products from "../../data/products";
 import { useState } from "react";
+import { useContext } from "react";
+import { Cart } from "../../context/Context";
 function SingleProduct() {
-  const navigate = useNavigate();
   const params = useParams();
   const [qty, setQty] = useState(1);
   const product = products.find(
     (product) => product._id.toString() === params.id
   );
   const addToCartHandler = () => {
-    navigate(`/cart/${params.id}?qty=${qty}`);
+    // navigate(`/cart/${params.id}?qty=${qty}`);
+    let productExist = cart.find((item) => item._id === product._id);
+    if (productExist === undefined) {
+      setCart([...cart, { ...product, qty }]);
+    } else {
+      setCart(
+        cart.map((item) =>
+          item._id === product._id
+            ? { ...item, qty: item.qty + qty }
+            : { ...item }
+        )
+      );
+      console.log("ekse", cart);
+    }
   };
+
+  const { cart, setCart } = useContext(Cart);
+  console.log(cart);
   return (
     <div>
       <Link to="/" className="btn btn-light my-3">

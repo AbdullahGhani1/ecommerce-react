@@ -3,10 +3,9 @@ import "./App.css";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Navigation from "./components/navigation/Navigation";
-import Products from "./components/products/Products";
 import SingleProduct from "./components/product/SingleProduct";
 import Error from "./components/pageNotFound/Error";
-import Cart from "./components/cart/Cart";
+import CartPage from "./components/cart/Cart";
 import AllProducts from "./components/products/AllProducts";
 function App() {
   const router = createBrowserRouter([
@@ -32,8 +31,8 @@ function App() {
           element: <About />,
         },
         {
-          path: "/cart/:id",
-          element: <Cart />,
+          path: "/cart",
+          element: <CartPage />,
         },
         {
           path: "*",

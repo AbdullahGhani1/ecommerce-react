@@ -1,57 +1,75 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Button, Image, Form, ListGroup } from "react-bootstrap";
-import products from "../../data/products";
 import { AiFillDelete } from "react-icons/ai";
+import { Cart } from "../../context/Context";
 
-function Cart() {
-  const params = useParams();
-  const [qty, setQty] = useState(1);
-
-  const product = products.find(
-    (product) => product._id.toString() === params.id
-  );
-
+function CartPage() {
+  const { cart, setCart } = useContext(Cart);
   return (
     <Row>
       <Col md={8}>
         <h1>Shopping Cart</h1>
-        <ListGroup variant="flush">
-          <ListGroup.Item>
-            <Row>
-              <Col md={2}>
-                <Image src={product.image} alt={product.name} fluid rounded />
-              </Col>
-              <Col md={3}>
-                <Link to={`/products/${product._id}`}>{product.name}</Link>
-              </Col>
-              <Col md={2}>PKR {product.price}</Col>
-              <Col md={2}>
-                <Form.Control
-                  as="select"
-                  value={qty}
-                  onChange={(e) => setQty(e.target.value)}
-                >
-                  {[...Array(product.countInStock).keys()].map((x) => (
-                    <option key={x + 1} value={x + 1}>
-                      {x + 1}
-                    </option>
-                  ))}
-                </Form.Control>
-              </Col>
-              <Col md={2}>
-                <Button
-                  type="button"
-                  variant="light"
-                  onClick={() => console.log("delete", product._id)}
-                >
-                  <AiFillDelete />
-                </Button>
-              </Col>
-            </Row>
-          </ListGroup.Item>
-        </ListGroup>
+        {cart.length !== 0
+          ? cart.map((product) => {
+              return (
+                <ListGroup variant="flush" key={product._id}>
+                  <ListGroup.Item>
+                    <Row>
+                      <Col md={2}>
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fluid
+                          rounded
+                        />
+                      </Col>
+                      <Col md={3}>
+                        <Link to={`/products/${product._id}`}>
+                          {product.name}
+                        </Link>
+                      </Col>
+                      <Col md={2}>PKR {product.price}</Col>
+                      <Col md={2}>
+                        <Form.Control
+                          as="select"
+                          value={product.qty}
+                          onChange={(e) =>
+                            setCart(
+                              cart.map((item) =>
+                                item._id === product._id
+                                  ? { ...item, qty: e.target.value }
+                                  : { ...item }
+                              )
+                            )
+                          }
+                        >
+                          {[...Array(product.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </Form.Control>
+                      </Col>
+                      <Col md={2}>
+                        <Button
+                          type="button"
+                          variant="light"
+                          onClick={() =>
+                            setCart(
+                              cart.filter((item) => item._id !== product._id)
+                            )
+                          }
+                        >
+                          <AiFillDelete />
+                        </Button>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                </ListGroup>
+              );
+            })
+          : null}
       </Col>
       <Col md={4}>
         <ListGroup variant="flush">
@@ -69,4 +87,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default CartPage;
