@@ -17,6 +17,10 @@ function SingleProduct() {
     let productExist = cart.find((item) => item._id === product._id);
     if (productExist === undefined) {
       setCart([...cart, { ...product, qty }]);
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...cart, { ...product, qty }])
+      );
     } else {
       setCart(
         cart.map((item) =>
@@ -25,6 +29,8 @@ function SingleProduct() {
             : { ...item }
         )
       );
+      localStorage.setItem("cart", JSON.stringify(cart));
+
       console.log("ekse", cart);
     }
   };
