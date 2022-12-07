@@ -7,6 +7,7 @@ import Products from "./components/products/Products";
 import SingleProduct from "./components/product/SingleProduct";
 import Error from "./components/pageNotFound/Error";
 import Cart from "./components/cart/Cart";
+import AllProducts from "./components/products/AllProducts";
 function App() {
   const router = createBrowserRouter([
     {
@@ -20,7 +21,7 @@ function App() {
         },
         {
           path: "/products",
-          element: <Products />,
+          element: <AllProducts />,
         },
         {
           path: "/products/:id",

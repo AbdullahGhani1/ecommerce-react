@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Col, Button, Image, Form, ListGroup } from "react-bootstrap";
 import products from "../../data/products";
+import { AiFillDelete } from "react-icons/ai";
 
 function Cart() {
   const params = useParams();
@@ -43,9 +44,9 @@ function Cart() {
                 <Button
                   type="button"
                   variant="light"
-                  onClick={() => console.log("delete")}
+                  onClick={() => console.log("delete", product._id)}
                 >
-                  <i className="fas fa-trash"></i>
+                  <AiFillDelete />
                 </Button>
               </Col>
             </Row>

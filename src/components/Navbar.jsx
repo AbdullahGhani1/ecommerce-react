@@ -23,7 +23,7 @@ function Navbars() {
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to="products/all">
+              <LinkContainer to="products">
                 <Nav.Link>Products</Nav.Link>
               </LinkContainer>
             </Nav>
