@@ -30,13 +30,10 @@ function SingleProduct() {
         )
       );
       localStorage.setItem("cart", JSON.stringify(cart));
-
-      console.log("ekse", cart);
     }
   };
 
   const { cart, setCart } = useContext(Cart);
-  console.log(cart);
   return (
     <div>
       <Link to="/" className="btn btn-light my-3">
