@@ -25,6 +25,8 @@ const products = [
     category: "Women’s Clothing",
     image:
       "https://cdn.shopify.com/s/files/1/0535/5585/5537/products/01_0d5fcc15-c8c9-4309-b1c4-84aa4dbd36d7.jpg?v=1667658573",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0535/5585/5537/products/02_d16c8ab5-9e9c-4a61-b565-31800be5e466.jpg?v=1667658573",
   },
 
   {
@@ -36,6 +38,8 @@ const products = [
     category: "Women’s Clothing",
     image:
       "https://cdn.shopify.com/s/files/1/0535/5585/5537/products/71_a0028ae2-6b9d-408f-a727-055512770f28.jpg?v=1667659702",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0535/5585/5537/products/72_ab0618f1-d90a-487c-8940-f2e3da7ba26d.jpg?v=1667659702",
   },
   {
     _id: 7339034083505,
@@ -58,6 +62,8 @@ const products = [
     category: "Women’s Clothing",
     image:
       "https://cdn.shopify.com/s/files/1/0535/5585/5537/products/35_57b1b7b1-3fd5-4f9e-8c07-27aaaa25d0f1.jpg?v=1667914890",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0535/5585/5537/products/36_1f2df5b1-fc08-486e-a084-be898cda769f.jpg?v=1667914890",
   },
   {
     _id: 7366493831344,
@@ -69,6 +75,7 @@ const products = [
     price: 19000,
     countInStock: 10,
   },
+
   {
     _id: 7366493831346,
     name: "Sneakers",

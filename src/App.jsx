@@ -6,7 +6,12 @@ import Navigation from "./components/navigation/Navigation";
 import SingleProduct from "./components/product/SingleProduct";
 import Error from "./components/pageNotFound/Error";
 import CartPage from "./components/cart/Cart";
+import CheckoutForm from "./components/checkout/checkout-form";
+import CheckoutSteps from "./components/checkout/CheckoutSteps";
 import AllProducts from "./components/products/AllProducts";
+import ApiTable from "./components/ApiTable";
+import LoginScreen from "./components/auth/LoginScreen";
+import RegisterScreen from "./components/auth/RegisterScreen";
 function App() {
   const router = createBrowserRouter([
     {
@@ -17,6 +22,14 @@ function App() {
           index: true,
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/login",
+          element: <LoginScreen />,
+        },
+        {
+          path: "/register",
+          element: <RegisterScreen />,
         },
         {
           path: "/products",
@@ -35,6 +48,19 @@ function App() {
           element: <CartPage />,
         },
         {
+          path: "/apiTable",
+          element: <ApiTable />,
+        },
+        {
+          path: "/checkout",
+          element: <CheckoutForm />,
+        },
+        {
+          path: "/checkout/steps",
+          element: <CheckoutSteps />,
+        },
+
+        {
           path: "*",
           element: <Error />,
         },
@@ -45,7 +71,6 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router} />
-
       {/* <Routes>
         <Route path="/" element={<Navigation />}>
           <Route path="home" element={<Home />} />

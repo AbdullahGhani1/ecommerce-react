@@ -1,14 +1,19 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import data from "../../assets/images/airpods.jpg";
-
+import "./product.css";
 function Products({ product }) {
   return (
     <Container>
       <Card className="my-3 me-auto rounded">
         <Link to={`/products/${product._id}`}>
-          <Card.Img src={product.image} variant="top" />
+          <Card.Img
+            className="productImage"
+            src={product.image}
+            onMouseOver={(event) => (event.target.src = product.image2)}
+            onMouseOut={(event) => (event.target.src = product.image)}
+            variant="top"
+          />
         </Link>
         <Card.Body>
           <Link

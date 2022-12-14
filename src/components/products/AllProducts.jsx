@@ -7,11 +7,11 @@ function AllProducts() {
     <div>
       <Row>
         {products.map((product) => {
-          return (
+          return product.category === "Shoes" ? (
             <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
               <Products product={product} />
             </Col>
-          );
+          ) : null;
         })}
       </Row>
     </div>
