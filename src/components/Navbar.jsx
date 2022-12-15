@@ -4,15 +4,10 @@ import { LinkContainer } from "react-router-bootstrap";
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { useContext } from "react";
 import { Cart } from "../context/Context";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Navbars() {
   const { cart } = useContext(Cart);
-  const user = localStorage.getItem("user");
-  const { login, setLogin } = useState(user);
-  console.log("user", user);
-  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <header>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -35,11 +30,8 @@ function Navbars() {
               <LinkContainer to="products">
                 <Nav.Link>Products</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="apiTable">
-                <Nav.Link>ApiTable</Nav.Link>
-              </LinkContainer>
             </Nav>
-            <Nav className="ml-auto">
+            <Nav className="ml-auto mt-lg-3 mt-md-4">
               <LinkContainer to="cart">
                 <Nav.Link>
                   <FaShoppingCart />
@@ -61,10 +53,10 @@ function Navbars() {
                 </Nav.Link>
               </LinkContainer>
               {user ? (
-                <LinkContainer to="/logout">
+                <LinkContainer to="/">
                   <Nav.Link>
                     <FaUserCircle />
-                    &nbsp;LogOut
+                    &nbsp;{user && user.name}
                   </Nav.Link>
                 </LinkContainer>
               ) : (

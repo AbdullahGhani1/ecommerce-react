@@ -12,7 +12,10 @@ function RegisterScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log("email: ", email, "password : ", password);
-    localStorage.setItem("user", JSON.stringify({ name, email, password }));
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ name, email, password, status: "login" })
+    );
     navigate("/");
   };
 
